@@ -1,0 +1,51 @@
+﻿1-:
+SELECT * FROM employee ORDER BY joined_at ASC LIMIT 1
+2-: 
+SELECT * FROM employees
+WHERE joined_at = (
+SELECT MAX(joined_at)
+FROM employees)
+
+
+3-:
+SELECT name, MAX(unitprice) AS MostExpensive
+FROM products
+SELECT name, MIN(unitprice) AS LeastExpensive
+FROM products
+
+
+4-:
+SELECT * FROM products WHERE stock_quantity = 0
+
+
+5-:
+SELECT productname,unitinstock,unitonorder
+FROM products
+WHERE unitinstock < unitonorder;
+
+
+6-:
+SELECT DISTINCT category, supplier
+FROM products
+JOIN categories USING (category_id)
+JOIN suppliers USING (supplier_id)
+
+
+7-:
+SELECT customers.CustomerName, orders.OrderID, orders.OrderDate FROM customers INNER JOIN orders ON customers.CustomerID=orders.CustomerID
+
+
+8-:
+SELECT customerName, MAX(numOrders)
+FROM customers 
+GROUP BY customerName
+
+
+9-:
+SELECT * 
+FROM Customers
+WHERE CustomerName LIKE '%RA%'
+
+
+10-:
+SELECT SUBSTRING(companyName, 1, CHARINDEX(' ', companyName)) AS firstWord FROM companies
